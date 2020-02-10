@@ -7,18 +7,19 @@
 |email   |string|null: false|
 
 - has_many :users_groups
-- has_many  :groups,  through:  :user
+- has_many :groups,  through:  :users_groups
+- has_many :coments
 
 
-##groupテーブル
-|Column   |Type|Options |
-
+##　groupテーブル
+|Column|Type|Options |
+|name    |string|null: false|
 - has_many :comments
 - has_many :users_groups
 - has_many :users,  through:  :users_groups
 
 
-#coments
+## comentsテーブル
 |Column|Type|Options    |
 |------|-----|----------|
 |coment|text |          |
@@ -30,7 +31,7 @@
 - belongs_to :group
 - belongs_to :user
 
-##user_group
+##　user_group
 |Column|Type|Options  |
 |------|-----|--------|
 |user_id|references|null: false, foreign_key: true|
