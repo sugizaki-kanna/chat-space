@@ -8,38 +8,13 @@
       %li.list
         = link_to 'edit_user_path' do
           = icon('fa', 'cog',class: 'icon')
-  -# .header
-  -#   .header__name
-  -#     masa
-  -#     %ul.header-lists
-        -# = link_to new_group_path do
-        -#   %i.fa.fa-pencil-square-o.header-items__icons--pen
-        -# = link_to edit_user_path(current_user.id) do
-        -#   %i.fa.fa-cog.header-items__icons--cog
-        = link_to new_group_path do
-          = icon('fa', 'edit',class: 'icon')
-      %li.list
-        = link_to 'edit_user_path' do
-          = icon('fa', 'cog',class: 'icon')
-
-
-
-
-
 
   .groups
-    .group
-      .group__name
-        グループ名
-      .group__message
-        新着メッセージ
-    .group
-      .group__name
-        グループ名
-      .group__message
-        新着メッセージ
-    .group
-      .group__name
-        グループ名
-      .group__message
-        新着メッセージ
+    - current_user.groups.each do |group|
+      .group
+        = link_to group_messages_path(group) do
+          .group__name
+            = group.name
+          .group__message
+            = group.show_last_message
+
