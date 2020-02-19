@@ -1,7 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
-
+# config.time_zone = 'Tokyo'
 Bundler.require(*Rails.groups)
 
 module ChatSpace
