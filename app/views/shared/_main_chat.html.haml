@@ -1,52 +1,24 @@
-.chat
-  .header
-    .left-header
-      .left-header__title
-        グループ名
-      %ul.left-header__members
-        Member：
-        %li.member
-          メンバー名
-        %li.member
-          メンバー名
-        %li.member
-          メンバー名
-    .right-header
-      .right-header__button
-        Edit
-  .messages
-    .message
-      .upper-message
-        .upper-message__user-name
-          メンバー
-        .upper-message__date
-          2017/04/04
-      .lower-meesage
-        .lower-message__content
-          メッセージ
-    .message
-      .upper-message
-        .upper-message__user-name
-          メンバー
-        .upper-message__date
-          2017/04/04
-      .lower-meesage
-        .lower-message__content
-          メッセージ
-    .message
-      .upper-message
-        .upper-message__user-name
-          メンバー
-        .upper-message__date
-          2017/04/04
-      .lower-mege
-        .lower-message__content
-          メッセージ
-  .form
-    %form
-      %input.form__message
-      .form__mask
-        %label.form__mask__image
-          = icon('fa','image',class: 'icon')
-          %input.hidden{type: 'file'}
-      %input.form__submit{type: 'submit', value: 'Send'}
+.chat-main
+  .chat-main__main-header
+    .chat-main__main-header__left-box
+      .chat-main__main-header__left-box__user
+        = @group.name
+      .chat-main__main-header__left-box__member-list
+        Member :  
+        - @group.users.each do |user|
+          %span.member-name= user.name
+    = link_to 'Edit', edit_group_path(@group), class: 'chat-main__main-header__edit'
+  .chat-main__messages
+    = render @messages
+
+  .chat-main__form
+    = form_for [@group, @message] do |f|
+      .chat-main__form__input-box
+        = f.text_field :content, class: 'chat-main__form__message', placeholder: 'type a message'
+        .chat-main__form__mask
+          = f.label :image, class: 'chat-main__form__mask__image' do
+            = icon('fas', 'image', class: 'icon')
+            = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'chat-main__form__submit'
+
+
