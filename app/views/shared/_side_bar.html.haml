@@ -1,20 +1,20 @@
 .side-bar
   .header
-    %h3.header__name
+    -# .header__box
+    %h3.header__box__name
       = current_user.name
-    %ul.header__lists
-      = link_to new_group_path do
-        = icon('fas', 'edit',class: 'icon')
-      %li.list
-        = link_to 'edit_user_path' do
-          = icon('fa', 'cog',class: 'icon')
+    %ul.header__box__lists
+      = link_to new_group_path, class: "header__box__lists-edit" do
+        = icon('fas', 'edit',  class: "header__box__lists-edit")
+      = link_to edit_user_path(current_user), class: "header__lists-cog" do
+        = icon('fas', 'cog',  class: "header__box__lists-cog")
 
   .groups
     - current_user.groups.each do |group|
       .group
-        = link_to group_messages_path(group) do
+        = link_to group_messages_path(group),class:"group" do
           .group__name
             = group.name
           .group__message
-            = group.show_last_message
-
+            まだメッセージがありません
+      .comennts
