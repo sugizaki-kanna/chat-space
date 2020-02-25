@@ -54,13 +54,14 @@ processData: false,
 contentType: false
 })
 .done(function(data){
-  
     var html = buildHTML(data);
-    $('.messages').append(html);      
+    $('.chat-main__messages').append(html);      
     $('form')[0].reset();
-    $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+    $('.chat-main__messages').animate({ scrollTop: $('.chat-main__messages')[0].scrollHeight});
+    $('.chat-main__form__submit').prop('disabled', false);
     $('form').submit(function() {
       $(this).attr('action', '/sample.html');
+    
 
       
   });
