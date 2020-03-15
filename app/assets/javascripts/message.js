@@ -55,6 +55,7 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
+      
       $('.chat-main__messages').append(html);      
       $('form')[0].reset();
 
@@ -65,7 +66,7 @@ $(function(){
       alert("メッセージ送信に失敗しました");
     });
   })
-})
+
 
 
 var reloadMessages = function() {
@@ -101,3 +102,4 @@ var reloadMessages = function() {
 if (document.location.href.match(/\/groups\/\d+\/messages/)) {
   setInterval(reloadMessages, 1000);
 }
+})
