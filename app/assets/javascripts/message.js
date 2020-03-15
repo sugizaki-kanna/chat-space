@@ -57,13 +57,9 @@ contentType: false
     var html = buildHTML(data);
     $('.chat-main__messages').append(html);      
     $('form')[0].reset();
+
     $('.chat-main__messages').animate({ scrollTop: $('.chat-main__messages')[0].scrollHeight});
     $('.chat-main__form__submit').prop('disabled', false);
-    $('form').submit(function() {
-      $(this).attr('action', '/sample.html');
-    
-
-      
   });
   })
   .fail(function() {
